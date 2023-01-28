@@ -1,0 +1,16 @@
+/* CSS IMPORT COMPONENTS */
+@import url('components/buttons.css');
+@import url('components/footer.css');
+@import url('components/forms.css');
+@import url('components/nav.css');
+@import url('components/popup.css');
+@import url('components/task.css');
+
+/* FONT IMPORT */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,400;0,500;0,900;1,100;1,400;1,500;1,900&display=swap');
+
+body{
+    font-family: 'Roboto', sans-serif;
+    color: #444;
+    margin: 90px 20px 80px 20px;
+}

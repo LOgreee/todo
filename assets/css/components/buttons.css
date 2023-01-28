@@ -1,0 +1,32 @@
+.btn{
+    min-width: 75px;
+    text-align: center;
+    text-decoration: none;
+    padding: 15px 40px;
+    color: #fff;
+    background: #999;
+    border: solid 1px #999;
+    border-radius: 20px;
+    display: inline-block;
+    transition: ease-in-out 0.2s;
+}
+
+/* Hover */
+    .btn:hover{
+        color: #999;
+        background: #fff;
+        cursor: pointer;
+        transition: ease-in-out 0.2s;
+    }
+
+/* Primary */
+    .btn.primary{
+        background: #43F472;
+        border: solid 1px #43F472;
+    }
+
+    .btn.primary:hover{
+        color: #43F472;
+        background: #fff;
+        transition: ease-in-out 0.2s;
+    }

@@ -1,0 +1,58 @@
+/* PopUp space */
+#popup_space{
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    position: fixed;
+    display: none;
+}
+
+    #popup_space.active{
+        background: rgba(0,0,0,0.5);
+        z-index: 2000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+/* PopUp */
+#popup_space>.popup{
+    width: 100%;
+    max-height: calc(100vh - 40px - 120px);
+    margin: 0 20%;
+    padding: 20px;
+    border-radius: 20px;
+    background: #FFF;
+    overflow-y: overlay;
+}
+
+    #popup_space>.popup>a{
+        color: inherit;
+        text-decoration: underline;
+    }
+
+        #popup_space>.popup>a:hover{
+            text-decoration: none;
+        }
+
+    #popup_space>.popup>.actions{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    #popup_space>.popup>.actions>.btn{
+        text-decoration: inherit;
+        color: #FFF;
+    }
+        #popup_space>.popup>.actions>.btn:hover{
+            color: #444;
+        }
+
+/* Tablette */
+@media screen and (max-width:800px){
+    #popup_space>.popup{
+        margin: 0 20px;
+    }
+}

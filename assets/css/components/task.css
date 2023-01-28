@@ -1,0 +1,107 @@
+#task_space>p{
+    margin-top: 35vh;
+    text-align: center;
+    color: #999;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+
+.task{
+    display: flex;
+    width: calc(100% - 60px);
+    height: auto;
+    padding: 0 30px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    align-items: center;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    background: #FFF;
+    -webkit-box-shadow: 0px 0px 20px 2px rgba(0,0,0,0.25); 
+    box-shadow: 0px 0px 20px 2px rgba(0,0,0,0.1);
+    transition: ease-in-out 0.3s;
+}
+
+    .task>input[type=checkbox]{
+        width: 20px;
+        height: 20px;
+        border: none;
+    }
+    
+        .task>input[type=checkbox]:checked{
+            background: #000;
+        }
+
+    .task>section{
+        width: calc(100% - 60px);
+        padding: 0 30px;
+    }
+        .task>section>p{
+            display: none;
+            margin: 0 0 20px 0;
+            transition: ease-in-out 0.2s;
+        }
+        
+        .task.open>section>p{
+            display: block;
+            font-size: 0.9em;
+            transition: ease-in-out 0.2s;
+        }
+    
+        .task>section>h1{
+            margin: 20px 0 0 0;
+        }
+
+            .task.details>section>h1:after{
+                content: "";
+                display: inline-block;
+                margin-left: 10px;
+                width: 15px;
+                height: 15px;
+                background-image: url(../../images/details_icon.svg);
+                background-size: contain;
+                background-repeat: no-repeat;
+            }
+
+        .task>section>h2{
+            font-size: 0.8em;
+            font-weight: normal;
+            margin: 0 0 20px 0;
+        }
+
+    .task>.delete{
+        width: 30px;
+        height: 30px;
+        background-image: url(../../images/icon_delete.svg);
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        display: block;
+    }
+
+        .task>.delete{
+            cursor: pointer;
+        }
+
+/* Validate */
+.task.validate{
+    background: #43F472;
+    transition: ease-in-out 0.3s;
+}
+
+    .task.validate>section>p{
+        display: none;
+        margin: 0 0 20px 0;
+        transition: ease-in-out 0.2s;
+    }
+        
+        .task.validate.open>section>p{
+            display: block;
+            transition: ease-in-out 0.2s;
+        }
+
+    .task.validate>section>h1{
+        margin: 20px 0 0 0;
+    }

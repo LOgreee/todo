@@ -1,0 +1,87 @@
+form{
+    width: 100%;
+}
+
+input{
+    font-family: inherit;
+    color: inherit;
+    width: 100%;
+    border: 0;
+    border-bottom: 1px solid #444;
+    outline: 0;
+    font-size: 1rem;
+    padding: 12px 0;
+    margin-bottom: 20px;
+    background: transparent;
+    transition: border-color 0.2s;
+}
+    textarea:focus, input:focus {  
+        font-weight: 700;
+        border-width: 3px;
+        border-color: #4AE874;
+        border-image-slice: 1;
+        transition: border-color 0.2s;
+    }
+
+textarea {
+    font-size: inherit;
+    font-family: inherit;
+    color: inherit;
+    width: 100%;
+    height: 150px;
+    padding: 12px 0;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 1px solid #444;
+    background: transparent;
+    resize: none;
+    transition: border-color 0.2s;
+}
+
+input[type=button], input[type=submit], input[type=reset] {
+    background: #4AE874;
+    min-width: 200px;
+    width: auto;
+    border: none;
+    color: white;
+    padding: 15px 40px;
+    text-align: center;
+    text-decoration: none;
+    margin: 20px 0;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: ease-in-out 0.2s;
+}
+
+    input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover {
+        background: #333333;
+    }
+
+form>.error{
+    min-width: calc(100% - 40px);
+    text-align: left !important;
+    display: block;
+    padding: 10px 20px;
+    margin: 0 0 20px 0 !important;;
+    color: #EEE;
+    background: #de1833;
+    border-radius: 20px;
+}
+
+/* Task */
+.task>input{
+    margin: 0;
+}
+
+/* Task creation */
+#creation_form_date,#creation_form_time{
+    display: inline-block;
+    width: 40%;
+}
+
+#creation_form>p{
+    display: inline-block;
+    text-align: right;
+    width: 16%;
+    margin: 0 2%;
+}
