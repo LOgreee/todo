@@ -7,20 +7,22 @@
     var audio_check = new Audio('assets/audio/check_sound.mp3');
 
 
+
 //////////
 
 //Functions
 
 //TASK SPACE
+    //Check if it's empty
+    function noTask(){
+        if (taskSpace.innerHTML==""){
+            taskSpace.innerHTML = `<p id="notask_info">Ajoutez votre première tâche en cliquant sur le bouton "Nouvelle tâche".</p>`;
+        } else {
+            document.getElementById("notask_info").remove();
+        }
+    };
 
-function noTask(){
-    console.log(taskSpace.innerHTML)
-    if (taskSpace.innerHTML==""){
-        taskSpace.innerHTML = `<p id="notask_info">Ajoutez votre première tâche en cliquant sur le bouton "Nouvelle tâche".</p>`;
-    } else {
-        document.getElementById("notask_info").remove();
-    }
-};
+
 
 //////////
 
@@ -38,6 +40,8 @@ function noTask(){
         datetimeElement.innerHTML = `${jour}/${mois}/${annee} - ${heures}h${minutes}`;
     };
 
+
+
 //////////
 
 //Pop Up
@@ -52,13 +56,11 @@ function noTask(){
             <p>The domain name todo.thibaultmorisse.com and thibaultmorisse.com is the exclusive property of Thibault MORISSE. Similarly, trademarks and logos appearing on the website are the exclusive property of Thibault MORISSE. Any reproduction or use of these trademarks, logos or domain names, in any way and for any reason whatsoever, is prohibited.<br/><br/>The creation of hypertext links to this site can only be made with the prior written authorization of Thibault MORISSE, who declines all responsibility for the content of third-party sites that may be linked to its website.</p><br/><br/><div class="actions"><a class="btn" onclick="closePopUp();">Fermer</a></div></div>`;
         };
 
-
         //Patch note popup
         function patchNote(){
             popupSpace.classList.add('active');
             popupSpace.innerHTML=`<div class="popup"><h1>Patch Note</h1><h3>v.0.2</h3><ul><li>Ajout d'un son lors de la validation d'une tâche.</li><li>Ajout d'une icone à côté du titre de la tâche, afin d'indiquer que cette tâche possède une description.</li><li>Correction de certains bugs.</li></ul><h3>v.0.1</h3><p>Publication de l'outil en ligne de To Do list</p><ul><li>Créations de tâches avec titre, description et date limite.</li><li>Validation des tâches.</li><li>Outil de supression des tâches.</li></ul><br/><br/><div class="actions"><a class="btn" onclick="closePopUp();">Fermer</a></div></div>`;
         };
-
 
         //Help popup
         function help(){
@@ -66,12 +68,15 @@ function noTask(){
             popupSpace.innerHTML=`<div class="popup"><h1>Besoin d'aide?</h1><h3>Comment créer une tâche ?</h3><p>Appuyez sur le boutton "Nouvelle tâche" en haut à droite de votre écran, puis personnalisez la.</p><br/><h3>Comment modifier une tâche ?</h3><p>...</p><br/><h3>Comment supprimer une tâche ?</h3><p>Appuyez sur l'icone "Poubelle" à droite de la tâche afin de la supprimer.</p><br/><h3>Je rencontre un bug, puis-je le faire remonter ?</h3><p>Bien évidemment!</p><a href="https://thibaultmorisse.com/about_me#contact" target="_blank">Contactez-moi via le formulaire de contact suivant ></a><br/><br/><br/><div class="actions"><a class="btn" onclick="closePopUp();">Fermer</a></div></div>`;
         };
 
+
     //CLOSE
         //Close all active popup
         function closePopUp(){
             popupSpace.classList.remove('active');
             popupSpace.innerHTML="";
         };
+
+
 
 //////////
 
@@ -98,16 +103,17 @@ function noTask(){
                     classDetails = "details";
                 }
                 if (date == "" && hour == ""){
-                    taskSpace.innerHTML = `<div id="${taskId}" class="task ${classDetails}"><input type="checkbox" class="validation"><section><h1>${name}</h1><h2></h2><p>${detail}</p></section><a onclick="deleteTask(${taskId});" class="delete" title="Delete"></a></div>` + taskSpace.innerHTML;
+                    taskSpace.innerHTML = `<div id="${taskId}" class="task ${classDetails}"><input type="checkbox" class="validation"><section><h1>${name}</h1><h2></h2><p>${detail}</p></section><a class="delete" title="Delete"></a></div>` + taskSpace.innerHTML;
                 } else if (hour==""){
-                    taskSpace.innerHTML = `<div id="${taskId}" class="task ${classDetails}"><input type="checkbox" class="validation"><section><h1>${name}</h1><h2>A faire pour le ${date}</h2><p>${detail}</p></section><a onclick="deleteTask(${taskId});" class="delete" title="Delete"></a></div>` + taskSpace.innerHTML;
+                    taskSpace.innerHTML = `<div id="${taskId}" class="task ${classDetails}"><input type="checkbox" class="validation"><section><h1>${name}</h1><h2>A faire pour le ${date}</h2><p>${detail}</p></section><a class="delete" title="Delete"></a></div>` + taskSpace.innerHTML;
                 } else if (date==""){
-                    taskSpace.innerHTML = `<div id="${taskId}" class="task ${classDetails}"><input type="checkbox" class="validation"><section><h1>${name}</h1><h2>A faire pour aujourd'hui à ${hour}</h2><p>${detail}</p></section><a onclick="deleteTask(${taskId});" class="delete" title="Delete"></a></div>` + taskSpace.innerHTML;
+                    taskSpace.innerHTML = `<div id="${taskId}" class="task ${classDetails}"><input type="checkbox" class="validation"><section><h1>${name}</h1><h2>A faire pour aujourd'hui à ${hour}</h2><p>${detail}</p></section><a class="delete" title="Delete"></a></div>` + taskSpace.innerHTML;
                 } else {
-                    taskSpace.innerHTML = `<div id="${taskId}" class="task ${classDetails}"><input type="checkbox" class="validation"><section><h1>${name}</h1><h2>A faire pour le ${date} à ${hour}</h2><p>${detail}</p></section><a onclick="deleteTask(${taskId});" class="delete" title="Delete"></a></div>` + taskSpace.innerHTML;
+                    taskSpace.innerHTML = `<div id="${taskId}" class="task ${classDetails}"><input type="checkbox" class="validation"><section><h1>${name}</h1><h2>A faire pour le ${date} à ${hour}</h2><p>${detail}</p></section><a class="delete" title="Delete"></a></div>` + taskSpace.innerHTML;
                 }
                 //Add interactions on new element
                 taskValid();
+                taskDelete();
                 openDetails();
                 //Close old popup
                 closePopUp();
@@ -120,10 +126,21 @@ function noTask(){
 
 
     //DELETE
-        //Delete task confirmation popup
-        function deleteTask(id){
+        //Old delete task confirmation popup
+        /*function deleteTask(id){
             popupSpace.classList.add('active');
             popupSpace.innerHTML=`<div class="popup"><h1>Supprimer cette tâche?</h1><p>Cette action est définitive.</p><br/><br/><div class="actions"><a class="btn" onclick="closePopUp();">Fermer</a><br/><br/><a class="btn primary" onclick="deleteTaskConfirm(${id});">Supprimer</a></div></div>`;
+        };*/
+
+        //Delete task
+        function taskDelete(){
+            document.querySelectorAll('.delete').forEach((deletebtn) => {
+                deletebtn.addEventListener('click', (event) => {
+                    let id = event.currentTarget.parentElement.id;
+                    popupSpace.classList.add('active');
+                    popupSpace.innerHTML=`<div class="popup"><h1>Supprimer cette tâche?</h1><p>Cette action est définitive.</p><br/><br/><div class="actions"><a class="btn" onclick="closePopUp();">Fermer</a><br/><br/><a class="btn primary" onclick="deleteTaskConfirm(${id});">Supprimer</a></div></div>`;
+                });
+            });
         };
         
         //Delete task forever
@@ -136,7 +153,7 @@ function noTask(){
             noTask();
         };
 
-            
+
     //INTERACTIONS
         //Valid task
         function taskValid(){
@@ -168,5 +185,6 @@ function noTask(){
 //Main code
 noTask();
 taskValid();
+taskDelete();
 openDetails();
 var t = setInterval(getCurrentDateTime,1000);
